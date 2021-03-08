@@ -2,7 +2,7 @@
 import './App.css';
 import Axios from 'axios';
 import { useState} from 'react'; 
-/* import Recipes from './Recipes'; */
+import Recipes from './Recipes';
 
 function App() {
   const [query, setQuery] = useState("")
@@ -19,9 +19,6 @@ function App() {
     setRecipes(result.data.hits)
     console.log(result.data);
   }
-
-
-
 
   const onSubmit = (e) => {
     e.preventDefault() 
@@ -42,9 +39,9 @@ function App() {
         <input className="app__submit" type="submit" value="search"/>
       </form>
 
-       <div>
+       <div className="app__recipes">
         {recipes.map((recipe) => {
-          <p>{recipe["label"]}</p>;
+         return <Recipes recipe={recipe}/>;
         })}
       </div> 
     </div>
